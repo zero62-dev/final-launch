@@ -455,4 +455,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply initial language
     applyLanguage(window.currentLang);
+
 });
