@@ -377,7 +377,7 @@ console.log("DOM LOADED");
     const showSlide = (index) => {
         heroSlides.forEach(slide => slide.classList.remove('active'));
         heroDots.forEach(dot => dot.classList.remove('active'));
-        
+        console.log('heroSlides:', heroSlides.length, 'heroDots:', heroDots.length);
         if (heroSlides[index]) heroSlides[index].classList.add('active');
         if (heroDots[index]) heroDots[index].classList.add('active');
         currentSlide = index;
@@ -458,5 +458,6 @@ console.log("DOM LOADED");
     applyLanguage(window.currentLang);
 
 });
+
 
 
