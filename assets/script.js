@@ -2,7 +2,7 @@
  * Whitemars | Electric Mobility
  * Main Script
  */
-
+console.log("SCRIPT RUNNING");
 document.addEventListener('DOMContentLoaded', () => {
     // --- Data Definitions ---
     const models = {
@@ -457,3 +457,4 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(window.currentLang);
 
 });
+
