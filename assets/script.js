@@ -4,6 +4,7 @@
  */
 console.log("SCRIPT RUNNING");
 document.addEventListener('DOMContentLoaded', () => {
+console.log("DOM LOADED");
     // --- Data Definitions ---
     const models = {
         "Guardian": {
@@ -457,4 +458,5 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(window.currentLang);
 
 });
+
 
