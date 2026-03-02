@@ -190,3 +190,8 @@ input[type="checkbox"]:checked + div {
   width: 24px;
   height: 8px;
 }
+#hero-slider .hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
