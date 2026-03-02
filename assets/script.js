@@ -367,39 +367,43 @@ console.log("DOM LOADED");
             }
         });
     });
-
-    // --- Hero Slider Logic ---
+// --- Hero Slider Logic (Fixed for Deployment) ---
+const initHeroSlider = () => {
     const heroSlides = document.querySelectorAll('.hero-slide');
     const heroDots = document.querySelectorAll('.hero-dot');
     let currentSlide = 0;
     const slideInterval = 5000;
 
+    if (heroSlides.length === 0) return;
+
     const showSlide = (index) => {
-        heroSlides.forEach(slide => slide.classList.remove('active'));
-        heroDots.forEach(dot => dot.classList.remove('active'));
-        console.log('heroSlides:', heroSlides.length, 'heroDots:', heroDots.length);
-        if (heroSlides[index]) heroSlides[index].classList.add('active');
+        heroSlides.forEach(s => s.classList.remove('active'));
+        heroDots.forEach(d => d.classList.remove('active'));
+        
+        heroSlides[index].classList.add('active');
         if (heroDots[index]) heroDots[index].classList.add('active');
         currentSlide = index;
     };
 
-    const nextSlide = () => {
-        let next = (currentSlide + 1) % heroSlides.length;
-        showSlide(next);
-    };
+    let autoSlide = setInterval(() => {
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        showSlide(currentSlide);
+    }, slideInterval);
 
-    if (heroSlides.length > 0) {
-        let autoSlide = setInterval(nextSlide, slideInterval);
-
-        heroDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(autoSlide);
-                showSlide(index);
-                autoSlide = setInterval(nextSlide, slideInterval);
-            });
+    heroDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(autoSlide);
+            showSlide(index);
+            autoSlide = setInterval(() => {
+                currentSlide = (currentSlide + 1) % heroSlides.length;
+                showSlide(currentSlide);
+            }, slideInterval);
         });
-    }
+    });
+};
 
+// استدعي الدالة داخل الـ DOMContentLoaded
+initHeroSlider();
     // --- AI Assistant Logic ---
     const aiButton = document.getElementById('whitemars-ai-button');
     const aiModal = document.getElementById('whitemars-ai-modal');
@@ -458,6 +462,7 @@ console.log("DOM LOADED");
     applyLanguage(window.currentLang);
 
 });
+
 
 
 
