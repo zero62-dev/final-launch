@@ -161,37 +161,50 @@ input[type="radio"]:checked + div,
 input[type="checkbox"]:checked + div {
     @apply border-white;
 }
-/* ===== HERO SLIDER (plain CSS) ===== */
+/* ===== HERO FIX (force full screen + working fade) ===== */
+#home{
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
 
-#hero-slider .hero-slide {
+#hero-slider{
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#hero-slider .hero-slide{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
   z-index: 0;
 }
 
-#hero-slider .hero-slide.active {
+#hero-slider .hero-slide.active{
   opacity: 1;
   z-index: 1;
 }
 
-.hero-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.4);
-  cursor: pointer;
-  transition: all .5s ease;
-}
-
-.hero-dot.active {
-  background: #fff;
-  width: 24px;
-  height: 8px;
-}
-#hero-slider .hero-slide img {
+#hero-slider .hero-slide img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* keep hero content always above slider */
+#home .hero-content{
+  position: relative;
+  z-index: 50;
+}
+
+/* dots always clickable */
+#home .hero-dot{
+  z-index: 60;
 }
